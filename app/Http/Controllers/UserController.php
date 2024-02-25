@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,6 +13,10 @@ class UserController extends Controller
             'email' => ['required', 'email', 'min:3'],
             'password' => ['required', 'min:5', 'max:200']
         ]);
+
+        $incomingFields['password'] = bcrypt($incomingFields['password']);
+        User::create($incomingFields);
+        
         return 'Thank you for registering!';
     }
 }
