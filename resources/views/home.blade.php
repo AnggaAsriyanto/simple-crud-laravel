@@ -6,16 +6,35 @@
 </head>
 <body>
      <main>
-          <div>
-               <h2>Register</h2>
-               <form action="/register" method="POST">
+
+          @auth
+               <h4>Your logedin</h4>
+               <form action="/logout" method="POST">
                     @csrf
-                    <input name="name" type="text" placeholder="name">
-                    <input name="email" type="text" placeholder="email">
-                    <input name="password" type="password" placeholder="password">
-                    <button>Submit</button>
+                    <button>Logout</button>
                </form>
-          </div>
+          @else
+               <div>
+                    <h2>Register</h2>
+                    <form action="/register" method="POST">
+                         @csrf
+                         <input name="name" type="text" placeholder="name">
+                         <input name="email" type="text" placeholder="email">
+                         <input name="password" type="password" placeholder="password">
+                         <button>Submit</button>
+                    </form>
+               </div>
+
+               <div>
+                    <h2>Login</h2>
+                    <form action="/login" method="POST">
+                         @csrf
+                         <input name="loginname" type="text" placeholder="name">
+                         <input name="loginpassword" type="password" placeholder="password">
+                         <button>Submit</button>
+                    </form>
+               </div>
+          @endauth
      </main>
 </body>
 </html>
