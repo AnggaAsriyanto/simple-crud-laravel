@@ -19,9 +19,19 @@
                     <form action="/create-post" method="POST">
                          @csrf
                          <input type="text" name="title" placeholder="Title">
-                         <input type="text" name="body" placeholder="Body..">
+                         <textarea name="body" placeholder="Body.."></textarea>
                          <button>Save</button>
                     </form>
+               </div>
+
+               <div>
+                    <h4>Your Posts</h4>
+                    @foreach ($posts as $post)
+                        <div>
+                              <h1>{{$post['title']}}</h1>
+                              <p>{{$post['body']}}</p>
+                        </div>
+                    @endforeach
                </div>
           @else
                <div>
