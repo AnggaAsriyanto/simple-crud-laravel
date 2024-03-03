@@ -33,7 +33,6 @@
                               <p><a href="/edit-post/{{$post->id}}" method="POST">Edit Post</a></p>
                               <form action="/delete-post/{{$post->id}}" method="POST">
                                    @csrf
-                                   @method("DELETE")
                                    <button>Delete</button>
                               </form>
                         </div>
